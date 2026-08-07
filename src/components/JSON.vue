@@ -37,10 +37,14 @@ const austen = computed(() =>
       <!-- Activity 3.1: Render a list containing author names and their birth years. Hint: Make use of the v-for directive to iterate through the array of authors. -->
       <!-- TODO: CODE TO RENDER LIST OF AUTHORS HERE -->
       <ul>
-        <li v-for="author in authors" :key="author.id">
-          {{ author.name }} ({{ author.birthYear }})
-        </li>
-      </ul>
+  <li
+    v-for="author in authors"
+    :key="author.id"
+    :class="{ highlight: author.name === 'George Orwell' }"
+  >
+    {{ author.name }} ({{ author.birthYear }})
+  </li>
+</ul>
 
       <h3>Filtering Arrays</h3>
       <!-- Activity 3.2: Render a list containing authors born after 1850. Hint: Make use of the v-for directive to iterate through the array of authors that you have filtered out. -->
@@ -166,7 +170,9 @@ h1 {
 }
 
 .highlight {
-  background-color: #42b883;
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
 }
 
 code {
