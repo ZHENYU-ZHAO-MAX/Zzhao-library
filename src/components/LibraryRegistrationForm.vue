@@ -62,6 +62,9 @@
                 <option value="female">Female</option>
                 <option value="other">Other</option>
               </select>
+              <div v-if="errors.gender" class="text-danger">
+  {{ errors.gender }}
+</div>
             </div>
           </div>
 
@@ -128,8 +131,9 @@ const submittedCards = ref([]);
 
 const submitForm = () => {
     validateName(true);
-    validatePassword(true)
-    if(!errors.value.username && !errors.value.password){
+    validatePassword(true);
+    validateGender(true);
+    if(!errors.value.username && !errors.value.password && !errors.value.Gender){
   submittedCards.value.push({
         ...formData.value
     });
@@ -196,6 +200,17 @@ const validatePassword = (blur) => {
     errors.value.password = null;
   }
 };
+
+//Gender required
+const validateGender = (blur) => {
+  if (!formData.value.gender) {
+    if (blur)
+      errors.value.gender = "Please select a gender.";
+  } else {
+    errors.value.gender = null;
+  }
+}
+
 
 </script>
 
