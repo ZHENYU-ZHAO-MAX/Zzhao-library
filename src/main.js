@@ -7,6 +7,8 @@ import App from './App.vue'
 // import bootstrap css
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+import PrimeVue from 'primevue/config'
+import Aura from '@primeuix/themes/aura'
 
 createApp(App).mount('#app')
 
