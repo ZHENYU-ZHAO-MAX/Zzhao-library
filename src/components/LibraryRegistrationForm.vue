@@ -12,7 +12,7 @@
                 type="text"
                 class="form-control"
                 id="username"
-                v-model="formData.username"
+                required v-model="formData.username"
               >
             </div>
 
@@ -22,6 +22,7 @@
                 type="password"
                 class="form-control"
                 id="password"
+                minlength="4" maxlength="10"
                 v-model="formData.password"
               >
             </div>
