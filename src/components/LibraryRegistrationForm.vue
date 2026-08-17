@@ -73,11 +73,16 @@
               Reason for joining
             </label>
             <textarea
-              class="form-control"
-              id="reason"
-              rows="3"
-              v-model="formData.reason"
-            ></textarea>
+  class="form-control"
+  id="reason"
+  rows="3"
+  v-model="formData.reason"
+  @blur="validateReason(true)"
+  @input="validateReason(false)"
+></textarea>
+<div v-if="errors.reason" class="text-danger">
+  {{ errors.reason }}
+</div>
           </div>
 
           <div class="text-center">
@@ -133,7 +138,8 @@ const submitForm = () => {
     validateName(true);
     validatePassword(true);
     validateGender(true);
-    if(!errors.value.username && !errors.value.password && !errors.value.Gender){
+    validateReason(true);
+    if(!errors.value.username && !errors.value.password && !errors.value.gender && !errors.value.reason){
   submittedCards.value.push({
         ...formData.value
     });
@@ -211,6 +217,16 @@ const validateGender = (blur) => {
   }
 }
 
+//Reason at least 10 characters
+const validateReason = (blur) => {
+  if (formData.value.reason.length < 10) {
+    if (blur)
+      errors.value.reason =
+        "Reason must be at least 10 characters.";
+  } else {
+    errors.value.reason = null;
+  }
+}
 
 </script>
 
